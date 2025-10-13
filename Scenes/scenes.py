@@ -1,4 +1,5 @@
 import player
+player = player.Player("Player1")
 
 
 def scene_one():
@@ -14,6 +15,7 @@ BANG! BANG! BANG! again. You look towards the window only to find a silhouette o
 prying at your door. You think to yourself, what do i do? Am I getting robed? Am I going
 to die???""")
     main_decision()
+
 
 def weapon_choice():
     """If player chooses to arm themselves."""
@@ -91,6 +93,7 @@ def barricade_choice():
     if choice == "1":
         player.add_item("Barricaded Door")
         print("\nYou block the main door with furniture — it won’t be easy to break through.")
+
     elif choice == "2":
         player.add_item("Barricaded Windows")
         print("\nYou move a dresser against the windows — visibility reduced, safety increased.")
@@ -104,22 +107,55 @@ def barricade_choice():
 
 #  MAIN CHOICE MENU
 def main_decision():
-    """The main action prompt that branches to specific follow-ups."""
-    print("\nIt’s decision time. What do you want to do?")
-    print("1. Arm yourself.")
-    print("2. Hide.")
-    print("3. Change into a stealthy outfit.")
-    print("4. Barricade the house.")
-    choice = input("Choose 1–4: ")
 
-    if choice == "1":
-        weapon_choice()
-    elif choice == "2":
-        hide_choice()
-    elif choice == "3":
-        stealth_clothing_choice()
-    elif choice == "4":
-        barricade_choice()
-    else:
-        print("Invalid choice. Try again.")
-    main_decision()
+    """The main action prompt that branches to specific follow-ups."""
+    while True:  # keep looping until a valid choice triggers scene_two
+        print("\nIt’s decision time. What do you want to do?")
+        print("1. Arm yourself.")
+        print("2. Hide.")
+        print("3. Change into a stealthy outfit.")
+        print("4. Barricade the house.")
+        print("5. Check inventory")  # NEW OPTION
+        choice = input("Choose 1–5: ")
+
+        if choice == "1":
+            weapon_choice()
+            break
+        elif choice == "2":
+            hide_choice()
+            break
+        elif choice == "3":
+            stealth_clothing_choice()
+            break
+        elif choice == "4":
+            barricade_choice()
+            break
+        elif choice == "5":
+            player.show_inventory()  # show inventory but do NOT advance scene
+        else:
+            print("Invalid choice. Try again.")
+
+    # After a valid choice (1–4), move to the next scene
+    from Scenes import scene_two
+    scene_two.start()
+#def main_decision():
+   # """The main action prompt that branches to specific follow-ups."""
+   # print("\nIt’s decision time. What do you want to do?")
+    #print("1. Arm yourself.")
+    #print("2. Hide.")
+    #print("3. Change into a stealthy outfit.")
+    #print("4. Barricade the house.")
+   # choice = input("Choose 1–4: ")
+
+   # if choice == "1":
+   #     weapon_choice()
+   # elif choice == "2":
+    #    hide_choice()
+    #elif choice == "3":
+    #    stealth_clothing_choice()
+   # elif choice == "4":
+    #    barricade_choice()
+   # else:
+    #    print("Invalid choice. Try again.")
+   # main_decision()
+
