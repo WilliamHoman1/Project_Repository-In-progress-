@@ -1,24 +1,29 @@
-# Project - [UPDATE TITLE HERE!]
+# Project - [SAFEHOME]
 
-This repository is for the semester project. For each milestone, you should update the corresponding
-section with information about your project status. 
+For this first milestone, I have created the story behind my game as well as some mechanics to it. I am working on expanding 
+my work but for now I am creating the basics. Things like ascii art and sounds are something I am looking forward to incorporating.
+I have also created different files for different aspects of the game to make my organization cleaner.
 
 ## Milestone 1
 
-Update this section to describe your project for milestone 1 and complete the following sections. If your project is
-using assets, be sure to keep the citations, sources, and resources section updated.
+My project for milestone 1 is a text based home invasion game. The player is set up on a storyline and is forced to protect their home 
+as well as their life. To do so successfully they are faced with a series of decisions. Each decision made will have an effect on their home
+as well as their life. The timing of when they make that decision also matters, either late in the game or early. The user will have complete 
+control over their character as well as their destiny.
 
 ### Current Progress
 
-Update this section to describe the current progress of your project.
+The current progress of my project is (just getting started).
 
 ### Challenges
 
-Update this section to describe the challenges for your project at this stage.
+My challenges for my project at this stage are creating the classes for each component of the game. The 
+complexity and depth of all the options.
 
 ### Future Directions
 
-What are your plans for the next milestone?
+My plans for the next milestone is to have a complete game that is ready for more additions like sound and art.
+As well as more personalization. 
 
 ---
 
