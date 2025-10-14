@@ -8,6 +8,8 @@ class Player:
         self.ready = False
         self.is_hiding = False
         self.is_alive = True
+        self.house_status= "intact"
+        self.last_action = None
 
     def add_item(self, item):
         self.inventory.append(item)

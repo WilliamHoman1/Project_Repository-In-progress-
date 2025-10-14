@@ -2,7 +2,8 @@
 
 For this first milestone, I have created the story behind my game as well as some mechanics to it. I am working on expanding 
 my work but for now I am creating the basics. Things like ascii art and sounds are something I am looking forward to incorporating.
-I have also created different files for different aspects of the game to make my organization cleaner.
+I have also created different files for different aspects of the game to make my organization cleaner. I have made the basics for the first scene as well and 
+am working on creating the next part.
 
 ## Milestone 1
 
@@ -13,16 +14,17 @@ control over their character as well as their destiny.
 
 ### Current Progress
 
-The current progress of my project is (just getting started).
+The current progress of my project is (just getting started with basics).
 
 ### Challenges
 
 My challenges for my project at this stage are creating the classes for each component of the game. The 
-complexity and depth of all the options.
+complexity and depth of all the options. Also, organizing folders and having the player stay updated throughout 
+the decisions.
 
 ### Future Directions
 
-My plans for the next milestone is to have a complete game that is ready for more additions like sound and art.
+My plans for the next milestone is to have more scenes that play through almost the entire game. And to be ready for more additions like sound and art.
 As well as more personalization. 
 
 ---

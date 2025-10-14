@@ -2,6 +2,8 @@ from Scenes import scenes
 import player
 
 def start_game():
+    """The start of the game, description and welcome message.
+    """
     name = (input ("WELCOME TO SAFEHOME SYSTEM, PLEASE ENTER YOUR NAME: " ))
     current_player = player.Player(name)
     welcome_message = (f" Welcome {current_player.name}, to the SafeHome defense system. This will be\n"
