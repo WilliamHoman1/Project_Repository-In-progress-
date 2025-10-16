@@ -138,6 +138,6 @@ def main_decision():
         else:
             print("Invalid choice. Try again.")
 
-    # After a valid choice (1–5), move to the next scene
+    # After a valid choice (1–5), move to the next  scene
     from Scenes import scene_two
     scene_two.start(player)
