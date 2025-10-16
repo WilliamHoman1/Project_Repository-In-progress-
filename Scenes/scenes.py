@@ -134,7 +134,7 @@ def main_decision():
             barricade_choice()
             break
         elif choice == "5":
-            player.show_inventory()  # show inventory but do NOT advance scene
+            player.show_inventory()  # show inventory but does not advance scene
         else:
             print("Invalid choice. Try again.")
 
