@@ -1,8 +1,8 @@
 import player
-player = player.Player("Player1")
+import game_engine
 
 
-def scene_one():
+def scene_one(current_player):
     print("""\nOn a cloudy Thursday night, you are home alone, preparing to make dinner 
 while throwing your favorite show on the T.V. You bring out the ingredients, seasonings,
 utensils and everything you need to make yourself a steak dinner. A treat to nourish your
@@ -14,10 +14,10 @@ roll on. Time passes. The food is done and you sit down to eat. Suddenly. \n
 BANG! BANG! BANG! again. You look towards the window only to find a silhouette of a man
 prying at your door. You think to yourself, what do i do? Am I getting robed? Am I going
 to die???""")
-    main_decision()
+    main_decision(current_player)
 
 
-def weapon_choice():
+def weapon_choice(current_player):
     """If player chooses to arm themselves."""
     print("\nYou decide to arm yourself. What weapon do you grab?")
     print("1. Kitchen Knife – quick and light.")
@@ -26,22 +26,22 @@ def weapon_choice():
     choice = input("Choose your weapon (1–3): ")
 
     if choice == "1":
-        player.add_item("Kitchen Knife")
+        current_player.add_item("Kitchen Knife")
         print("\nYou grab a kitchen knife from the drawer — better than nothing.")
     elif choice == "2":
-        player.add_item("Baseball Bat")
+        current_player.add_item("Baseball Bat")
         print("\nYou grab your baseball bat — solid and reliable.")
     elif choice == "3":
-        player.add_item("Fire Poker")
+        current_player.add_item("Fire Poker")
         print("\nYou snatch a fire poker from the fireplace. It feels heavy in your hand.")
     else:
         print("Invalid choice. Try again.")
-    weapon_choice(player)
-    player.last_action = "armed"
+        return False
+    current_player.last_action = "armed"
     print("\n You grip onto your weapon, the thunder booms as you wait... ")
+    return True
 
-
-def hide_choice():
+def hide_choice(current_player):
     """If player chooses to hide."""
     print("\nYou decide to hide. Where do you go?")
     print("1. Closet – small and dark.")
@@ -50,20 +50,29 @@ def hide_choice():
     choice = input("Choose your hiding spot (1–3): ")
 
     if choice == "1":
-        player.hide()
+        current_player.hide()
+        current_player.hiding_spot = "closet"
+        current_player.last_action = "hide"
         print("\nYou squeeze into the closet, holding your breath.")
+        return True
     elif choice == "2":
-        player.hide()
+        current_player.hide()
+        current_player.hiding_spot = "under bed"
+        current_player.last_action = "hide"
         print("\nYou slide under the bed, praying the intruder doesn’t look down.")
+        return True
     elif choice == "3":
-        player.hide()
+        current_player.hide()
+        current_player.hiding_spot = "behind couch"
+        current_player.last_action = "hide"
         print("\nYou duck behind the couch. The rain masks your quiet breathing.")
+        return True
     else:
         print("Invalid choice. Try again.")
-        hide_choice()
+        return False
 
 
-def stealth_clothing_choice():
+def stealth_clothing_choice(current_player):
     """If player chooses to change clothes for stealth."""
     print("\nYou decide to change into quieter clothing.")
     print("1. Soft clothes – quieter footsteps.")
@@ -72,19 +81,25 @@ def stealth_clothing_choice():
     choice = input("Choose your outfit (1–3): ")
 
     if choice == "1":
-        player.add_item("Soft Clothes")
+        current_player.add_item("Soft Clothes")
+        current_player.last_action = "stealth"
         print("\nYou slip into soft, quiet clothes — every movement makes less noise.")
+        return True
     elif choice == "2":
-        player.add_item("Workout Gear")
+        current_player.add_item("Workout Gear")
+        current_player.last_action = "stealth"
         print("\nYou throw on workout clothes — light and easy to move in.")
+        return True
     elif choice == "3":
+        current_player.last_action = "stealth"
         print("\nYou decide not to change. Every second counts.")
+        return True
     else:
         print("Invalid choice. Try again.")
-        stealth_clothing_choice()
+        return False
 
 
-def barricade_choice():
+def barricade_choice(current_player):
     """If player chooses to barricade the house."""
     print("\nYou decide to barricade the house. Where do you start?")
     print("1. Main door – push furniture against it.")
@@ -93,26 +108,29 @@ def barricade_choice():
     choice = input("Choose 1–3: ")
 
     if choice == "1":
-        player.add_item("Barricaded Door")
+        current_player.add_item("Barricaded Door")
         print("\nYou block the main door with furniture — it won’t be easy to break through.")
-
     elif choice == "2":
-        player.add_item("Barricaded Windows")
+        current_player.add_item("Barricaded Windows")
         print("\nYou move a dresser against the windows — visibility reduced, safety increased.")
     elif choice == "3":
-        player.add_item("Full Barricade")
+        current_player.add_item("Full Barricade")
         print("\nYou block doors and windows. The place feels secure... for now.")
     else:
         print("Invalid choice. Try again.")
-        barricade_choice()
+        barricade_choice(current_player)
+
+    current_player.last_action = "barricade"
+    print("\nYou brace yourself, heart pounding louder.")
+    return True
 
 
 
-def main_decision():
+def main_decision(current_player):
 
     """The main action prompt that branches to specific follow-ups."""
     while True:
-        print(f"\nPLAYER STATUS: {player.name} | HEALTH: {player.health}")# keep looping until a valid choice triggers scene_two
+        print(f"\nPLAYER STATUS: {current_player.name} | HEALTH: {current_player.health}")# keep looping until a valid choice triggers scene_two
         print("\nIt’s decision time. What do you want to do?")
         print("1. Arm yourself.")
         print("2. Hide.")
@@ -121,23 +139,25 @@ def main_decision():
         print("5. Check inventory")
         choice = input("Choose 1–5: ")
 
+        valid_choice = True
+
         if choice == "1":
-            weapon_choice()
-            break
+            valid_choice = weapon_choice(current_player)
         elif choice == "2":
-            hide_choice()
-            break
+            valid_choice = hide_choice(current_player)
         elif choice == "3":
-            stealth_clothing_choice()
-            break
+            valid_choice = stealth_clothing_choice(current_player)
         elif choice == "4":
-            barricade_choice()
-            break
+            valid_choice = barricade_choice(current_player)
         elif choice == "5":
-            player.show_inventory()  # show inventory but does not advance scene
+            current_player.show_inventory()
+            valid_choice = False         # show inventory but does not advance scene
         else:
             print("Invalid choice. Try again.")
+            valid_choice = False
+        if valid_choice:
+            break
 
     # After a valid choice (1–5), move to the next  scene
     from Scenes import scene_two
-    scene_two.start(player)
+    scene_two.scene_two(current_player)

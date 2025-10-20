@@ -14,7 +14,7 @@ def start_game():
     print(welcome_message)
 
     input("\n Press Enter to continue...")
-    scenes.scene_one()
+    scenes.scene_one(current_player)
 
 
 
