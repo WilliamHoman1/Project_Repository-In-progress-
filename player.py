@@ -1,3 +1,5 @@
+from game_engine import start_game
+
 class Player:
 
     def __init__(self, name):
@@ -31,3 +33,17 @@ class Player:
 
     def status(self):
         return f"{self.name} | Health: {self.health} | Inventory: {self.inventory}"
+
+    def die(self, intruder = None):
+        self.alive = False
+        self.health = 0
+        print("\nYou have died.")
+        print(f"Your health: {self.health}")
+        if intruder:
+            print(f"Intruder Health: {intruder.health}")
+        choice = input("\n Do you want to play again (y/n): ").strip().lower()
+        if choice == "y":
+            print("\nRestarting game...\n")
+            start_game()
+        else:
+            print("\nThank you for playing!")

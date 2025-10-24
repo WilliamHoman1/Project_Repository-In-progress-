@@ -65,7 +65,7 @@ Before you can overthink, he starts walking towards the kitchen. Do you decide t
             if decision == "y":
                 print("\nHeart pounding, you lunge for the knife!")
                 current_player.add_item("Kitchen Knife")
-                intruder.take_damage(10)
+                intruder.take_damage(20)
                 print("You slash wildly, landing a lucky hit! The intruder howls in pain as you sprint upstairs to safety.")
                 current_player.last_action = "attack"
                 break
@@ -88,17 +88,102 @@ Before you can overthink, he starts walking towards the kitchen. Do you decide t
         # Add stealth story
         # You can check inventory for 'Soft Clothes' or 'Workout Gear'
         if "Soft Clothes" in current_player.inventory:
-            print("Your movements are silent. No one hears you. So you position yourself to escape or run to a new room for a weapon.")
+            print("Your movements are silent. No one hears you. So you position yourself to escape or run to a new room for a weapon."
+                  "However, you hear glass shatter to a million pieces and the intruder is in.")
+            choice = input("Do you sneak upstairs? (y/n): ").strip().lower()
+            if choice == "y":
+                current_player.location = "upstairs"
+            else:
+                print("You stay put, hidden, but the intruder draws closer")
+                current_player.location = "downstairs"
+
         elif "Workout Gear" in current_player.inventory:
-            print("You feel agile. Ready to run out of the house to save your life. But, all of your possessions will be gone. Either way, you are ready for it.")
+            print("You feel agile. Ready to run out of the house to save your life. But, all of your possessions will be gone. Either way, you are ready for it."
+                  "You hear the intruder break the lock on the door, he's in. But, he does not know where you are.")
+            choice = input("Do you run upstairs quickly to buy more time or stay put? (y/n): ").strip().lower()
+            if choice == "y":
+                current_player.location = "upstairs"
+                print("You sprint upstairs out of the main floor to create distance. You remember you have your phone in your pocket.")
+            else:
+                print("You stay put, hidden, but the intruder draws closer")
 
     elif current_player.last_action == "barricade":
-        print("You barricade doors and windows, making it hard for anyone to enter.")
+        print("You have protected your house from entry.")
         if "Full Barricade" in current_player.inventory:
-            print("Even with heavy pounding, the intruder can’t get in. However, you remember and unlocked door from being outside earlier. Suddenly you hear it creek open."
-                  "The intruder is in.")
-        # Continue story...
+            print(f"""Even with heavy pounding, the intruder can’t get in. However, you remember and unlocked door from being outside earlier. Suddenly you see a shadow of a sledgehammer
+The intruder smashes through the window and climbs through. You are frozen in fear.""")
+            choice = input("\nDo you try to throw a punch or do you run upstairs to find a weapon and try to possibly call the police? (fight/run): ").strip().lower()
+            if choice == "fight":
+                print("""You spot the intruder. Adrenaline coursing through your veins. You both lock eyes and you rush towards him.
+But, in your rush of thought you did not realize he had the weapon and you did not. He strikes you down with 
+the sledgehammer. You did not survive.""")
+                current_player.alive = False
+                current_player.health = 0
+                print(current_player.die())
+            elif choice == "run":
+                print("\nYou snap out of your trance and run upstairs. Escaping any danger that could have happened. Looking for a weapon.")
+                print("You find a old BB gun, this will help you think to yourself.")
+                current_player.add_item("BB Gun")
+                current_player.location = "upstairs"
+            else:
+                print("You hesitate, frozen in time, the intruder closes in on you. It is over.")
+                current_player.alive = False
+                current_player.health = 0
+                print(current_player.die())
+        elif "Barricaded Door" in current_player.inventory:
+            print("You reinforced the main door. It's steady for now."
+                  "But suddenly you hear shattering glass spread throughout the living room. He found another way in.")
+            choice = input("Do you try to fight or run upstairs for more options? (fight/run): ").strip().lower()
+            if choice == "fight":
+                print("You rush toward the noise, fists ready. The intruder swings his weapon — a brutal blow lands.")
+                print("You collapse. The world fades. You didn’t survive.")
+                current_player.health = 0
+                current_player.alive = False
+                print(current_player.die())
+            elif choice == "run":
+                print("You sprint upstairs to create distance. You remember you have your phone in your pocket.")
+                print("You also stumble upon a heavy flashlight that could be used as a weapon")
+                choice = input("Pick it up? (y/n): ").strip().lower()
+                if choice == "y":
+                    current_player.add_item("Heavy Flashlight")
+                if choice == "n":
+                    current_player.location = "upstairs"
+                else:
+                    print("You are frozen like Elsa, your world turns black.")
+                    current_player.health = 0
+                    current_player.alive = False
+                    print(current_player.die())
+
+        elif "Barricaded Windows" in current_player.inventory:
+            print("""You block off the windows by moving tall cabinets in front of them. 
+The front door is still weak. Moments later, you hear the clank of the knob dropped to the floor. The intruder has
+a sledgehammer and has broken in.""")
+            choice=input("Do you try to fight or run upstairs for more time? (fight/run): ").strip().lower()
+            if choice == "fight":
+                print("You grab the toaster from the countertop and try to swing it."
+                      "The intruder is stunned.")
+                intruder.health -= 10
+                print(f"\nIntruder is now at {intruder.health} health")
+                print("""\nIts no use. He overcomes the damage and overpowers you. It is over.""")
+                current_player.health = 0
+                current_player.alive = False
+                print(current_player.die())
+            elif choice == "run":
+                print("""You run upstairs away from the danger. As the intruder looks through the kitchen
+for valuables. However, you find a long metal rod from a bed. Thinking to yourself this could help.""")
+                choice = input("Pick it up? (y/n): ").strip().lower()
+                if choice == "y":
+                    current_player.add_item("Long Metal Rod")
+                if choice == "n":
+                    current_player.location = "upstairs"
+            else:
+                print("You are frozen like Elsa, your world turns black.")
+                current_player.health = 0
+                current_player.alive = False
+                print(current_player.die())
+
+
     else:
-        # Default story if somehow last_action isn’t set
+
         print("You freeze for a moment, unsure of what to do next.")
 
