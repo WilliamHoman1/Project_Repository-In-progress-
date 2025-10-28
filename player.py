@@ -16,7 +16,7 @@ class Player:
 
     def add_item(self, item):
         self.inventory.append(item)
-        print(f"{item} added to inventory.")
+        print(f"\n{item} added to inventory.")
     def show_inventory(self):
         if self.inventory:
             print("You have:")
@@ -30,6 +30,13 @@ class Player:
 
     def add_defense(self, defense):
         self.defenses.append(defense)
+
+    def take_damage(self, damage):
+        self.health -= damage
+        print(f"\n{self.name} took {damage} damage! Health is now {self.health}.")
+        if self.health <= 0:
+            self.is_alive = False
+
 
     def status(self):
         return f"{self.name} | Health: {self.health} | Inventory: {self.inventory}"

@@ -160,4 +160,7 @@ def main_decision(current_player):
 
     # After a valid choice (1–5), move to the next  scene
     from Scenes import scene_two
-    scene_two.scene_two(current_player)
+    from Intruder import Intruder
+
+    intruder = Intruder()
+    scene_two.scene_two(current_player, intruder)

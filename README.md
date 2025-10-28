@@ -31,20 +31,30 @@ As well as more personalization.
 
 ## Milestone 2
 
-Update this section to describe your project for milestone 2 and complete the following sections. If your project is
-using assets, be sure to keep the citations, sources, and resources section updated.
+My project is the home defender game. There is a story line that follows the character depending on the choice's that they make. The goal
+is for them to survive as long as possible. And finally defeat the intruder by getting him arrested and wounded. This can be done by acquiring
+certain weapons and making the right choices. If they fail to do this, they will be killed by the intruder and have the option to restart. This
+is a text-based game that follows a story of an average individual struck by danger.
 
 ### Current Progress
 
-Update this section to describe the current progress of your project.
+The current progress of my game is the welcome message, story line, and options for the character are all set up. I need to complete the rest of 
+the scenes and move the story along but the basic format from prototype one is complete. The user can die if they make the wrong choice or currently
+keep their journey going if they make the right moves. The user is able to go down many different pathways in order to defeat the intruder and has a wide
+variety of options to personalize their story.
 
 ### Challenges
 
-Update this section to describe the challenges for your project at this stage.
+Some challenges I have faced is that it takes a good chunk of time to make each new scene. This is because it is all based on user input. I have to make different
+story lines based on the choices that the user made. There are a total of 5 choices from the beginning so I have to make 5 different story lines off of that.
+Something else I found challenging was carrying over the player across multiple scenes. However, I have figured that out and the players position, stats, and inventory
+save across the duration of the game.
 
 ### Future Directions
 
-What are your plans for the final submission?
+My future plans for this game is to complete all the scenes and once that is done, go back in and add art or music. This would add visual aspects to my game and 
+make it even more immersive. Once I have completed the game itself that is when I can add more speciality things like I mentioned before. But, currently the task 
+is to finish all the scenes and then go back and make additions. I also want to add a timer for certain attack decision to put pressure on the user to stay engaged.
 
 ---
 
@@ -72,11 +82,8 @@ Complete this section to include citations for assets and resources that you use
 write this section like in the following example:
 
 ```
-UI-Pack Sci-FI: https://kenney.nl/assets/ui-pack-sci-fi
+Researched using a timer with this website: https://www.geeksforgeeks.org/python/how-to-set-an-input-time-limit-in-python/
 
-Digital Audio Pack: https://kenney.nl/assets/digital-audio
-
-I created by own ASCII art using https://asciiflow.com/#/ and generative AI.
 ```
 
 Any assets and resources you use need to be verifiable that they are licenced for you to use. If you made your
