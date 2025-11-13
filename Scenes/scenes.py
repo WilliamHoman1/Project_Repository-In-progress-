@@ -45,7 +45,7 @@ def hide_choice(current_player):
     """If player chooses to hide."""
     print("\nYou decide to hide. Where do you go?")
     print("1. Closet – small and dark.")
-    print("2. Under the bed – cramped but hidden.")
+    print("2. Under the kitchen island – cramped but hidden.")
     print("3. Behind the couch – not ideal, but quick.")
     choice = input("Choose your hiding spot (1–3): ")
 
@@ -57,9 +57,9 @@ def hide_choice(current_player):
         return True
     elif choice == "2":
         current_player.hide()
-        current_player.hiding_spot = "under bed"
+        current_player.hiding_spot = "kitchen island"
         current_player.last_action = "hide"
-        print("\nYou slide under the bed, praying the intruder doesn’t look down.")
+        print("\nYou slide under the island, praying the intruder doesn’t look under the countertops.")
         return True
     elif choice == "3":
         current_player.hide()
@@ -91,6 +91,7 @@ def stealth_clothing_choice(current_player):
         print("\nYou throw on workout clothes — light and easy to move in.")
         return True
     elif choice == "3":
+        current_player.add_item("Keep current clothes")
         current_player.last_action = "stealth"
         print("\nYou decide not to change. Every second counts.")
         return True
