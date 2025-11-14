@@ -83,6 +83,7 @@ write this section like in the following example:
 
 ```
 Researched using a timer with this website: https://www.geeksforgeeks.org/python/how-to-set-an-input-time-limit-in-python/
+Research ASCII art with https://www.asciiart.eu
 
 ```
 

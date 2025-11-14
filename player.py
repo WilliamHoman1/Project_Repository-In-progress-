@@ -1,4 +1,18 @@
 from game_engine import start_game
+from ascii_art import death
+from ascii_art import draw_smiley
+
+def play_again(intruder = None):
+    """Asks the player if they would like to play again."""
+    choice = input("\nDo you want to play again (y/n): ").strip().lower()
+    if choice == "y":
+        print("\nRestarting game...\n")
+        start_game()
+    else:
+        print("\nThank you for playing!")
+        draw_smiley()
+        exit()
+
 
 class Player:
 
@@ -44,6 +58,7 @@ class Player:
     def die(self, intruder = None):
         self.alive = False
         self.health = 0
+        death()
         print("\nYou have died.")
         print(f"Your health: {self.health}")
         if intruder:
@@ -54,3 +69,4 @@ class Player:
             start_game()
         else:
             print("\nThank you for playing!")
+

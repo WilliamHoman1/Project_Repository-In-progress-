@@ -1,6 +1,8 @@
 import player
 import game_engine
 from Intruder import Intruder
+from ascii_art import staircase
+from ascii_art import running_upstairs
 
 def scene_two(current_player, intruder):
     print("""\n---- Scene Two ----""")
@@ -33,11 +35,13 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                 print("\nYou charge forward, weapon raised and adrenaline flowing through your veins.")
                 print("The intruder stumbles back, caught off guard by your sudden courage.")
                 intruder.take_damage(10)
+                running_upstairs()
                 print("\nYou've delivered the first blow! You run upstairs to hide.")
                 current_player.last_action = "attack"
                 scene_three.scene_three(current_player, intruder)
                 break
             elif decision == "n":
+                running_upstairs()
                 print("\nYou decide to run upstairs you chose flight in your fight or flight response.")
                 current_player.last_action = "run"
                 scene_three.scene_three(current_player, intruder)
@@ -102,8 +106,10 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                 "Your movements are silent. No one hears you. So you position yourself to escape or run to a new room for a weapon."
                 "However, you hear glass shatter to a million pieces and the intruder is in.")
             while True:
+                staircase()
                 choice = input("Do you sneak upstairs? (y/n): ").strip().lower()
                 if choice == "y":
+                    running_upstairs()
                     current_player.location = "upstairs"
                     scene_three.scene_three(current_player, intruder)
                     break
@@ -124,6 +130,7 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                 choice = input("Do you run upstairs quickly to buy more time? (y/n): ").strip().lower()
                 if choice == "y":
                     current_player.location = "upstairs"
+                    running_upstairs()
                     print(
                         "You sprint upstairs out of the main floor to create distance. You remember you have your phone in your pocket.")
                     scene_three.scene_three(current_player, intruder)
@@ -139,8 +146,10 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
         elif "Keep current clothes" in current_player.inventory:
             print("Saving time, you sit waiting for the next move. After watching every move of the man outside. He starts to barge through the door.")
             while True:
+                staircase()
                 choice = input("Sneak upstairs? (y/n): ").strip().lower()
                 if choice == "y":
+                    running_upstairs()
                     current_player.location = "upstairs"
                     print("Your now upstairs and remember you have your phone!")
                     current_player.add_item("Phone")
@@ -169,6 +178,7 @@ the sledgehammer. You did not survive.""")
                 current_player.health = 0
                 print(current_player.die())
             elif choice == "run":
+                running_upstairs()
                 print(
                     "\nYou snap out of your trance and run upstairs. Escaping any danger that could have happened. Looking for a weapon.")
                 print("You find a old BB gun, this will help you think to yourself.")
@@ -192,6 +202,7 @@ the sledgehammer. You did not survive.""")
                 print(current_player.die())
 
             elif choice == "run":
+                running_upstairs()
                 print("You sprint upstairs to create distance. You remember you have your phone in your pocket.")
                 print("You also stumble upon a heavy flashlight that could be used as a weapon")
                 choice = input("Pick it up? (y/n): ").strip().lower()
@@ -225,6 +236,7 @@ a sledgehammer and has broken in.""")
                     current_player.alive = False
                     print(current_player.die())
                 elif choice == "run":
+                    running_upstairs()
                     print("""You run upstairs away from the danger. As the intruder looks through the kitchen
     for valuables. However, you find a long metal rod from a bed. Thinking to yourself this could help.""")
                     while True:

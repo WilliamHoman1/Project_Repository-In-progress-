@@ -72,27 +72,29 @@ and you hear the creak of the floor boards. Footsteps.""")
                     print("\nThe intruder lunges back at you and swings his sledgehammer, grazing your shoulder!")
                     current_player.take_damage(10)
 
-                else:
                     print("Please pick a valid choice.")
-
-                go_again = input_with_timeout(
-                    "\nQuick!! You have 10 seconds! Go for another hit while you have him injured? (y/n):", timeout=10)
-                if go_again == "y":
-                    print("You strike again!")
-                    intruder.take_damage(10)
-                    print ("\nYou run to another bedroom upstairs. Remembering your phone in your pocket. You start to dial 911...")
-                    current_player.add_item("Phone")
-                    current_player.location = "another room"
-                    scene_four.scene_four(current_player, intruder)
+                    go_again = input_with_timeout(
+                        "\nQuick!! You have 10 seconds! Go for another hit while you have him injured? (y/n):", timeout=10)
+                    if go_again == "y":
+                        print("You strike again!")
+                        intruder.take_damage(10)
+                        print ("\nYou run to another bedroom upstairs. Remembering your phone in your pocket. You start to dial 911...")
+                        current_player.add_item("Phone")
+                        current_player.location = "another room"
+                        scene_four.scene_four(current_player, intruder)
+                        break
+                    elif go_again == "n":
+                        print("\nYou missed an opportunity. As he is stunned, you run to another room.")
+                        current_player.location = "another room"
+                        scene_four.scene_four(current_player, intruder)
+                        break
+                    else:
+                        print("\n You froze too long... its over.")
+                        current_player.die()
+                        break
                     break
-                elif go_again == "n":
-                    print("\nYou missed an opportunity. As he is stunned, you run to another room.")
-                    break
-                else:
-                    print("\n You froze too long... its over.")
-                    current_player.die()
-            #else:
-                #print(f"You froze but you still have your {original_weapon}.")
+                #else:
+                    #print(f"You froze but you still have your {original_weapon}.")
 
 
         case "downstairs":
@@ -106,6 +108,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                     print("\nIt worked! You run upstairs. Remembering your phone is in your pocket. You start to dial 911...")
                     current_player.add_item("Phone")
                     current_player.location = "another room"
+                    scene_four.scene_four(current_player, intruder)
                     return
                 elif choice3 == "n":
                     print("\nHe checked the pantry.")
@@ -129,10 +132,12 @@ and you hear the creak of the floor boards. Footsteps.""")
                         if choice6 == "y":
                             current_player.add_item("Metal ruler")
                             current_player.location = "another room"
+                            scene_four.scene_four(current_player, intruder)
                             break
                         elif choice6 == "n":
                             print ("\nYou decided not to.")
                             current_player.location = "another room"
+                            scene_four.scene_four(current_player, intruder)
                             break
                         else:
                             print("\n Please choose either 'y' or 'n'.")
@@ -155,6 +160,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                     print("\nSuccessful! He's wounded! You move to another room upstairs. Phone in your pocket. You start to dial 911...")
                     print("The police say they will be there in 5 minutes. Survive 5 more minutes.")
                     current_player.location = "another room"
+                    scene_four.scene_four(current_player, intruder)
                     return
                 elif choice4 == "n":
                     print("\nYou hid in the corner. Too scared to act. He got to you first.")
@@ -184,6 +190,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                     if choice2 == "y":
                         print("You dodge! Running to another room!")
                         current_player.location = "another room"
+                        scene_four.scene_four(current_player, intruder)
                         return
                     elif choice2 == "n":
                         print("He stabs you fatally.")
@@ -194,8 +201,27 @@ and you hear the creak of the floor boards. Footsteps.""")
                         current_player.die()
                         return
                 elif choice == "dodge":
-                    print("\n")
-                    return
+                    print(f"\nYou dodge and slice with {current_player.inventory[-1]}! ")
+                    intruder.take_damage(15)
+                    print("As he is wounded. You run to another room to gather yourself.")
+                    while True:
+                        choice3 = input("\nRemembering your phone in your pocket. Do you call 911? (y/n):").strip().lower()
+                        if choice3 == "y":
+                            print("Great choice. The police say they are on their way!")
+                            current_player.add_item("Phone")
+                            current_player.location = "another room"
+                            scene_four.scene_four(current_player, intruder)
+                            break
+                        elif choice3 == "n":
+                            print("As you freeze in making a decision. He sneaks up on you and closes in.")
+                            print("Its over....")
+                            current_player.die()
+                            break
+                        else:
+                            print("\n Please choose either 'y' or 'n'.")
+
+
+
                 else:
                     print("\nPlease type 'dodge' or 'fight'.")
 

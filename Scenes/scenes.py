@@ -1,6 +1,7 @@
 import player
 import game_engine
-
+from ascii_art import shirt
+from ascii_art import weapon
 
 def scene_one(current_player):
     print("""\nOn a cloudy Thursday night, you are home alone, preparing to make dinner 
@@ -19,6 +20,7 @@ to die???""")
 
 def weapon_choice(current_player):
     """If player chooses to arm themselves."""
+    weapon()
     print("\nYou decide to arm yourself. What weapon do you grab?")
     print("1. Kitchen Knife – quick and light.")
     print("2. Baseball Bat – reliable reach and power.")
@@ -74,6 +76,7 @@ def hide_choice(current_player):
 
 def stealth_clothing_choice(current_player):
     """If player chooses to change clothes for stealth."""
+    shirt()
     print("\nYou decide to change into quieter clothing.")
     print("1. Soft clothes – quieter footsteps.")
     print("2. Workout gear – flexible and silent.")
