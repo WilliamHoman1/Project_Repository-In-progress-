@@ -1,7 +1,11 @@
-import player
 import random
-from player import play_again
 
+from Intruder import Intruder
+from player import play_again, Player
+
+#ACTIONS is a dictionary that stores all combat behaviors of this scene.
+#Each key represents a player action and contains, player_damage, self_damage
+#text, and dodge_chance.
 ACTIONS = {
     "fight": {
         "player_damage": (8,14),
@@ -23,7 +27,12 @@ ACTIONS = {
     }
 }
 
-def scene_four(current_player, intruder):
+def scene_four(current_player: Player, intruder: Intruder) -> None:
+    """Scene four, the final scene of the story. This is the big fight scene to see
+    if the user can survive and continue to make the right choices.
+
+    Loop continues until the player dies or the intruder drops below 20 HP."""
+
     print ("""\n---- Scene Four ----""")
     print("""
 You have now barricaded yourself in the last possible spot. The intruder has checked every 
@@ -42,7 +51,6 @@ This is it. This is the final confrontation. SURVIVE UNTIL THE POLICE ARRIVE!!""
             print("Officers burst in frantically. The intruder is arrested. Your home is safe. You are alive."
                   "YOU SURVIVE!!")
             play_again()
-            # have a restart game option here
             break
         print (f"\nYour health: {current_player.health}")
         print(f"Intruder health: {intruder.health}")
@@ -70,7 +78,7 @@ This is it. This is the final confrontation. SURVIVE UNTIL THE POLICE ARRIVE!!""
                     print(f"You failed to dodge and he gets to you for {dmg} damage!")
                     current_player.take_damage(dmg)
 
-                #Normal damage for run and fight
+            #Normal damage for run and fight
             elif isinstance(info["self_damage"], tuple):
                 low, high = info["self_damage"]
                 dmg = random.randint(low, high)

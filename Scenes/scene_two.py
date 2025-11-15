@@ -5,28 +5,32 @@ from ascii_art import staircase
 from ascii_art import running_upstairs
 
 def scene_two(current_player, intruder):
+    """The second scene of the game. Continues the game based off the players decisions
+    from scene one."""
     print("""\n---- Scene Two ----""")
 
 
 
     if current_player.last_action == "armed":
+    #If the player choose to arm themselves
+
         print("You now have a weapon.")  #Add story
         if "Kitchen Knife" in current_player.inventory:
             print(f"""You stand firm behind the counter where the smell of steak is still in the air. Clutching the knife
 white-knuckled. You hear another bang but this time it is followed by a shatter. A rain of glass falls to the floor
-the intruder has broken in. You start to sweat. Should I attack him? Should I wait? These questions race in your mind.
+the intruder has broken in with a sledgehammer. You start to sweat. Should I attack him? Should I wait? These questions race in your mind.
 
 Before you can overthink, he starts walking towards the kitchen. Do you decide to attack or run?""")  #What happens
         elif "Baseball Bat" in current_player.inventory:
             print(f"""You stand firm near the closet where you have sight of where the noise is coming from. Clutching the baseball bat
 white-knuckled. You hear another bang but this time it is followed by a shatter. A rain of glass falls to the floor
-the intruder has broken in. You start to sweat. Should I attack him? Should I wait? These questions race in your mind.
+the intruder has broken in with a sledgehammer. You start to sweat. Should I attack him? Should I wait? These questions race in your mind.
 
 Before you can overthink, he starts walking towards the kitchen. Do you decide to attack or run?""")  #What happens
         elif "Fire Poker" in current_player.inventory:
             print("""You stand firm near the fireplace, the smell of the old ashes getting stronger because of your heighten senses. Clutching 
 the fire poker white-knuckled. You hear another bang but this time it is followed by a shatter. A rain of glass falls to the floor
-the intruder has broken in. You start to sweat. Should I attack him? Should I wait? These questions race in your mind.
+the intruder has broken in with a sledgehammer. You start to sweat. Should I attack him? Should I wait? These questions race in your mind.
 
 Before you can overthink, he starts walking towards the kitchen. You can either attack or run.""")
         while True:
@@ -51,6 +55,8 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                 print("Please type 'y' or 'n'.")
 
     elif current_player.last_action == "hide":
+    #If the player is currently hiding
+
         print("You hear a crash — hidden away, peering through the darkness, you see a shadow.")
         if current_player.hiding_spot == "closet":
             print(
@@ -67,7 +73,7 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
             print("You stay hidden, unsure if the intruder has noticed you.")
 
         print(
-            "You hear a loud bang — glass shatters onto the floor. The intruder is inside. Your see the kitchen knife on the table but he will see you if you "
+            "You hear a loud bang — glass shatters onto the floor. The intruder is inside. He has a sledgehammer Your see the kitchen knife on the table but he will see you if you "
             "decide to grab it. Stay hidden or go for the weapon?")
         while True:
             decision = input("\nDo you want to grab the knife? (y/n): ").strip().lower()
@@ -98,13 +104,14 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
 
 
     elif current_player.last_action == "stealth":
+    #If the player choose to change outfits
         print("Moving silently in your outfit, you try to stay unnoticed.")
         # Add stealth story
         # You can check inventory for 'Soft Clothes' or 'Workout Gear'
         if "Soft Clothes" in current_player.inventory:
             print(
                 "Your movements are silent. No one hears you. So you position yourself to escape or run to a new room for a weapon."
-                "However, you hear glass shatter to a million pieces and the intruder is in.")
+                "However, you hear glass shatter to a million pieces and the intruder is in. He has a sledgehammer.")
             while True:
                 staircase()
                 choice = input("Do you sneak upstairs? (y/n): ").strip().lower()
@@ -125,7 +132,7 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
         elif "Workout Gear" in current_player.inventory:
             print(
                 "You feel agile. Ready to run out of the house to save your life. But, all of your possessions will be gone. Either way, you are ready for it."
-                "You hear the intruder break the lock on the door, he's in. But, he does not know where you are.")
+                "You hear the intruder break the lock on the door with a sledgehammer, he's in. But, he does not know where you are.")
             while True:
                 choice = input("Do you run upstairs quickly to buy more time? (y/n): ").strip().lower()
                 if choice == "y":
@@ -144,7 +151,8 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                     print("Please type 'y' or 'n'.")
 
         elif "Keep current clothes" in current_player.inventory:
-            print("Saving time, you sit waiting for the next move. After watching every move of the man outside. He starts to barge through the door.")
+            print("Saving time, you sit waiting for the next move. After watching every move of the man outside. He starts to barge through the door."
+                  "BANG! He breaks through with a sledgehammer.")
             while True:
                 staircase()
                 choice = input("Sneak upstairs? (y/n): ").strip().lower()
@@ -164,6 +172,7 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                     print("Please type 'y' or 'n'.")
 
     elif current_player.last_action == "barricade":
+    #If the player choose to protect their home
         print("You have protected your house from entry.")
         if "Full Barricade" in current_player.inventory:
             print(f"""Even with heavy pounding, the intruder can’t get in. However, you remember and unlocked door from being outside earlier. Suddenly you see a shadow of a sledgehammer
@@ -192,7 +201,8 @@ the sledgehammer. You did not survive.""")
                 print(current_player.die())
         elif "Barricaded Door" in current_player.inventory:
             print("You reinforced the main door. It's steady for now."
-                  "But suddenly you hear shattering glass spread throughout the living room. He found another way in.")
+                  "But suddenly you hear shattering glass spread throughout the living room. He found another way in."
+                  "And he has a sledgehammer.")
             choice = input("Do you try to fight or run upstairs for more options? (fight/run): ").strip().lower()
             if choice == "fight":
                 print("You rush toward the noise, fists ready. The intruder swings his weapon — a brutal blow lands.")

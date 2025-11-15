@@ -1,21 +1,12 @@
-import player
-import game_engine
-from Intruder import Intruder
-import threading    # Allows multiple functions to work at the same time.
+import threading   # Allows multiple functions to work at the same time.
 from Scenes import scene_four
-location_outcomes = {
-        "attack": "Bedroom upstairs",
-        "downstairs" : "Bedroom upstairs",
-        "escape" : "another room",
-        "run": "another room",
-        "stealth": "another room",
-        "barricade": "Bedroom upstairs",
-        "default": "Bedroom upstairs",
-}
+
 
 
 def input_with_timeout(prompt, timeout=10):
-    """Gives user a time limit to make a decision"""
+    """Gives user a time limit to make a decision.
+    Runs for the given amount of seconds and then quits the program and runs
+    the consequence. Forcing the user to make a decision."""
     result = [None]
 
     def ask():
@@ -29,15 +20,16 @@ def input_with_timeout(prompt, timeout=10):
 
 
 def scene_three(current_player, intruder):
-    """Scene Three."""
+    """The third scene of the game. Based off decisions from scene one and two.
+    Progresses through their individual story."""
     print("\n---- Scene Three ----")
-
     print("""
 Your heart is racing. But most importantly, you are alive. 
 What am I going to do? What am I going to do? questions rapidly fly in your mind. The rain pours harder 
 and you hear the creak of the floor boards. Footsteps.""")
-
-
+#Player regains breathe after scene two, goes to another form of option choosing with embedded user
+#input. In the form of match cases. First, allows the user to check inventory and gather their mind
+#before continuing.
     while True:
         choice = input("\nWant to check inventory (y/n):").strip().lower()
         if choice == "y":
@@ -51,7 +43,10 @@ and you hear the creak of the floor boards. Footsteps.""")
             print("\nInvalid input. Please try again.")
 
     match current_player.last_action:
+    #Matches the players last action to the case and then plays through it.
         case "attack":
+        #Player previously chose to attack. They now choose a new item and have immediate
+        #confrontation.
             original_weapon = current_player.inventory[-1]
             print("\n As you panic looking for anything to help you, you spot three different items. ")
             while True:
@@ -72,9 +67,9 @@ and you hear the creak of the floor boards. Footsteps.""")
                     print("\nThe intruder lunges back at you and swings his sledgehammer, grazing your shoulder!")
                     current_player.take_damage(10)
 
-                    print("Please pick a valid choice.")
                     go_again = input_with_timeout(
-                        "\nQuick!! You have 10 seconds! Go for another hit while you have him injured? (y/n):", timeout=10)
+                        "\nQuick!! You have 10 seconds! Go for another hit while you have him injured? (y/n):",
+                        timeout=10)
                     if go_again == "y":
                         print("You strike again!")
                         intruder.take_damage(10)
@@ -92,12 +87,10 @@ and you hear the creak of the floor boards. Footsteps.""")
                         print("\n You froze too long... its over.")
                         current_player.die()
                         break
-                    break
-                #else:
-                    #print(f"You froze but you still have your {original_weapon}.")
-
 
         case "downstairs":
+        #Player choose to stay downstairs. They now are faced with getting out of a situation
+        #they put themselves in.
             print("\nYou hear the intruder drawing near. You must think quick. You hide in the pantry." )
             print("\nHowever, hes now in front of the door!!")
 
@@ -117,8 +110,6 @@ and you hear the creak of the floor boards. Footsteps.""")
                 else:
                     print("\nPlease pick a valid choice.")
 
-        case "n":
-            print("\nn")
         case "escape":
             print("\nAfraid of any confrontation. You hide in a back room of the upstairs floor. You pull out your phone.")
             while True:
@@ -220,13 +211,8 @@ and you hear the creak of the floor boards. Footsteps.""")
                         else:
                             print("\n Please choose either 'y' or 'n'.")
 
-
-
                 else:
                     print("\nPlease type 'dodge' or 'fight'.")
-
-
-
 
         case _:
             print("\nAs you hide out of site and you are still downstairs, the intruder"

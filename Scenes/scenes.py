@@ -4,6 +4,8 @@ from ascii_art import shirt
 from ascii_art import weapon
 
 def scene_one(current_player):
+    """First scene the player will go through, backstory and set up of the
+    story line."""
     print("""\nOn a cloudy Thursday night, you are home alone, preparing to make dinner 
 while throwing your favorite show on the T.V. You bring out the ingredients, seasonings,
 utensils and everything you need to make yourself a steak dinner. A treat to nourish your
@@ -131,7 +133,6 @@ def barricade_choice(current_player):
 
 
 def main_decision(current_player):
-
     """The main action prompt that branches to specific follow-ups."""
     while True:
         print(f"\nPLAYER STATUS: {current_player.name} | HEALTH: {current_player.health}")# keep looping until a valid choice triggers scene_two

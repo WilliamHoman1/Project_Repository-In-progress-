@@ -4,7 +4,7 @@ from ascii_art import draw_ascii_house
 from ascii_art import draw_smiley
 
 def start_game():
-    """The start of the game, description and welcome message.
+    """The introduction screen and welcome message of the game.
     """
     draw_smiley()
     name = (input ("WELCOME TO SAFEHOME SYSTEM, PLEASE ENTER YOUR NAME: " ))
