@@ -143,8 +143,10 @@ and you hear the creak of the floor boards. Footsteps.""")
                 else:
                     print ("\n Please choose either 'y' or 'n'.")
         case "run":
+        #Players last action was to run. They hide near the stairs. Faced with a decision
+        #to make.
             original_weapon = current_player.inventory[-1]
-            print("\n You are hiding in the corner right before the stairwell. Looking to see if you can spot the intruder.")
+            print("\nYou are hiding in the corner right before the stairwell. Looking to see if you can spot the intruder.")
             print(f"You spot him and hide behind the wall. {original_weapon} in hand.")
             while True:
                 choice4 = input(f"\nHe walks up the stairs looking for valuables. You have time to strike. Do it? (y/n):").strip().lower()
