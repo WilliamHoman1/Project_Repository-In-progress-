@@ -1,11 +1,11 @@
 
 class Intruder:
+    """This class sets up the default intruder that the player will be defending against.
+    The intruder is carried throughout the game and its attributes (health) are updated throughout the game."""
     def __init__(self, name= "Intruder", health = 100, damage = 10):
         self.name = name
         self.health = 100
         self.inventory = []
-        self.last_action = None
-        self.hiding_spot = None
 
     def take_damage(self, amount):
         self.health -= amount

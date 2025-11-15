@@ -1,7 +1,6 @@
-import player
-import game_engine
 from ascii_art import shirt
 from ascii_art import weapon
+from ascii_art import hiding
 
 def scene_one(current_player):
     """First scene the player will go through, backstory and set up of the
@@ -21,7 +20,7 @@ to die???""")
 
 
 def weapon_choice(current_player):
-    """If player chooses to arm themselves."""
+    """If player chooses to arm themselves. Faced with another option screen."""
     weapon()
     print("\nYou decide to arm yourself. What weapon do you grab?")
     print("1. Kitchen Knife – quick and light.")
@@ -46,7 +45,8 @@ def weapon_choice(current_player):
     return True
 
 def hide_choice(current_player):
-    """If player chooses to hide."""
+    """If player chooses to hide. Faced with another option screen."""
+    hiding()
     print("\nYou decide to hide. Where do you go?")
     print("1. Closet – small and dark.")
     print("2. Under the kitchen island – cramped but hidden.")
@@ -77,7 +77,7 @@ def hide_choice(current_player):
 
 
 def stealth_clothing_choice(current_player):
-    """If player chooses to change clothes for stealth."""
+    """If player chooses to change clothes for stealth. Faced with another option screen."""
     shirt()
     print("\nYou decide to change into quieter clothing.")
     print("1. Soft clothes – quieter footsteps.")
@@ -106,7 +106,7 @@ def stealth_clothing_choice(current_player):
 
 
 def barricade_choice(current_player):
-    """If player chooses to barricade the house."""
+    """If player chooses to barricade the house. Faced with another option screen."""
     print("\nYou decide to barricade the house. Where do you start?")
     print("1. Main door – push furniture against it.")
     print("2. Windows – close curtains and block with a dresser.")
@@ -155,8 +155,8 @@ def main_decision(current_player):
         elif choice == "4":
             valid_choice = barricade_choice(current_player)
         elif choice == "5":
-            current_player.show_inventory()
-            valid_choice = False         # show inventory but does not advance scene
+            current_player.show_inventory() #Show inventory but does not advance scene
+            valid_choice = False
         else:
             print("Invalid choice. Try again.")
             valid_choice = False

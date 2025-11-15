@@ -1,18 +1,21 @@
-import player
-import game_engine
-from Intruder import Intruder
+
 from ascii_art import staircase
 from ascii_art import running_upstairs
 
 def scene_two(current_player, intruder):
     """The second scene of the game. Continues the game based off the players decisions
-    from scene one."""
+    from scene one. Each decision they make has a slightly different story line. Making it unique
+    to the user and giving them more customization to how their journey goes.
+
+    Multiple (while) loops have been used to make sure the scene does not move on until the user picks
+     a correct input."""
     print("""\n---- Scene Two ----""")
 
 
 
     if current_player.last_action == "armed":
-    #If the player choose to arm themselves
+    #If the player choose to arm themselves. Based on the decision they made previously of specifically what weapon they chose,
+    #a slightly different story line will play. Faced with multiple decisions as well.
 
         print("You now have a weapon.")  #Add story
         if "Kitchen Knife" in current_player.inventory:
@@ -49,13 +52,13 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                 print("\nYou decide to run upstairs you chose flight in your fight or flight response.")
                 current_player.last_action = "run"
                 scene_three.scene_three(current_player, intruder)
-                #can later branch to a running/escape scene
                 break
             else:
                 print("Please type 'y' or 'n'.")
 
     elif current_player.last_action == "hide":
-    #If the player is currently hiding
+    #If the player is currently hiding, goes through if,elif, and else statements based on the different locations the user could
+    #be. Changes the story line based on that information.
 
         print("You hear a crash — hidden away, peering through the darkness, you see a shadow.")
         if current_player.hiding_spot == "closet":
@@ -104,10 +107,9 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
 
 
     elif current_player.last_action == "stealth":
-    #If the player choose to change outfits
+    #If the player choose to change outfits. Each if,elif, and else statement is based on what the user decided to wear and plays
+    #a different story based on that.
         print("Moving silently in your outfit, you try to stay unnoticed.")
-        # Add stealth story
-        # You can check inventory for 'Soft Clothes' or 'Workout Gear'
         if "Soft Clothes" in current_player.inventory:
             print(
                 "Your movements are silent. No one hears you. So you position yourself to escape or run to a new room for a weapon."
@@ -172,7 +174,8 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                     print("Please type 'y' or 'n'.")
 
     elif current_player.last_action == "barricade":
-    #If the player choose to protect their home
+    #If the player choose to protect their home. There is a different story based on what the user picked to protect their home. Along with
+    #different decisions they have to make as well.
         print("You have protected your house from entry.")
         if "Full Barricade" in current_player.inventory:
             print(f"""Even with heavy pounding, the intruder can’t get in. However, you remember and unlocked door from being outside earlier. Suddenly you see a shadow of a sledgehammer

@@ -60,7 +60,7 @@ This is it. This is the final confrontation. SURVIVE UNTIL THE POLICE ARRIVE!!""
         if action in ACTIONS:
             info = ACTIONS[action]
             print ("\n" + info["text"])
-            #Deal damage
+            #Deal damage, code for dealing damage to intruder.
             if isinstance(info["player_damage"], tuple):
                 low, high = info["player_damage"]
                 dmg = random.randint(low, high)
@@ -69,7 +69,7 @@ This is it. This is the final confrontation. SURVIVE UNTIL THE POLICE ARRIVE!!""
             elif info["player_damage"] > 0:
                 intruder.take_damage(info["player_damage"])
 
-            #Dodge mechanic
+            #Dodge mechanic, this is the code for when the player decides to dodge.
             if info["self_damage"] == "chance":
                 if random.random() < info["dodge_chance"]:
                     print("You successfully dodged!")
@@ -78,13 +78,13 @@ This is it. This is the final confrontation. SURVIVE UNTIL THE POLICE ARRIVE!!""
                     print(f"You failed to dodge and he gets to you for {dmg} damage!")
                     current_player.take_damage(dmg)
 
-            #Normal damage for run and fight
+            #Normal damage for run and fight, code for it.
             elif isinstance(info["self_damage"], tuple):
                 low, high = info["self_damage"]
                 dmg = random.randint(low, high)
                 print(f"The intruder hits you for {dmg} damage!")
                 current_player.take_damage(dmg)
-                #Fixed damage
+            #Fixed damage, code for it.
             elif isinstance(info["self_damage"], int) and info["self_damage"] > 0:
                 print(f"The intruder hits you for {info['self_damage']} damage!")
                 current_player.take_damage(info["self_damage"])

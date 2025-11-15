@@ -143,7 +143,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                 else:
                     print ("\n Please choose either 'y' or 'n'.")
         case "run":
-        #Players last action was to run. They hide near the stairs. Faced with a decision
+        #Players last action was to run. They hide near the stairs. Faced with more decision's
         #to make.
             original_weapon = current_player.inventory[-1]
             print("\nYou are hiding in the corner right before the stairwell. Looking to see if you can spot the intruder.")
@@ -166,6 +166,8 @@ and you hear the creak of the floor boards. Footsteps.""")
 
 
         case "stealth":
+        #Players last action was to be stealthy. This mini scene plays out because they picked that.
+        #The user is once again faced with different decisions.
             print(f"\nLooking around the room for something to defend yourself you find a pencil, metal ruler, and broken glass bottle.")
             while True:
                 weapon_choice = input("\nWhich one do you want?").strip().lower()
@@ -219,6 +221,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                     print("\nPlease type 'dodge' or 'fight'.")
 
         case _:
+        #This is the last case out of the actions. This is for the user that decided to barricade their home.
             print("\nAs you hide out of site and you are still downstairs, the intruder"
                   "begins heading your direction. ")
             choice = input(f"\nYou must act fast, use the {current_player.inventory[-1]} or run for safety (run/attack): ").strip().lower()

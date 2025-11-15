@@ -1,3 +1,7 @@
+"""This file holds the player class where all the users information is stored.
+Carries on throughout multiple files. Holds different functions that can be called
+at any point during the game."""
+
 from game_engine import start_game
 from ascii_art import death
 from ascii_art import draw_smiley
@@ -17,6 +21,7 @@ def play_again(intruder = None):
 class Player:
 
     def __init__(self, name):
+        self.alive = None
         self.name = name
         self.health = 100
         self.inventory = []
@@ -25,12 +30,12 @@ class Player:
         self.is_hiding = False
         self.hiding_spot = None
         self.is_alive = True
-        self.house_status= "intact"
         self.last_action = None
 
     def add_item(self, item):
         self.inventory.append(item)
         print(f"\n{item} added to inventory.")
+
     def show_inventory(self):
         if self.inventory:
             print("You have:")
@@ -38,22 +43,16 @@ class Player:
                 print(f" - {item}")
         else:
             print("Your inventory is empty.")
+
     def hide(self):
         self.is_hiding = True
         print(f"{self.name} is now hiding.")
-
-    def add_defense(self, defense):
-        self.defenses.append(defense)
 
     def take_damage(self, damage):
         self.health -= damage
         print(f"\n{self.name} took {damage} damage! Health is now {self.health}.")
         if self.health <= 0:
             self.is_alive = False
-
-
-    def status(self):
-        return f"{self.name} | Health: {self.health} | Inventory: {self.inventory}"
 
     def die(self, intruder = None):
         self.alive = False
