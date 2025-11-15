@@ -111,6 +111,8 @@ and you hear the creak of the floor boards. Footsteps.""")
                     print("\nPlease pick a valid choice.")
 
         case "escape":
+        #Player tried to escape the scene and hid upstairs. They are faced with a choice
+        #of calling 9/11 to progress the story.
             print("\nAfraid of any confrontation. You hide in a back room of the upstairs floor. You pull out your phone.")
             while True:
                 choice5 = input("\nDial 911? (y/n):").strip().lower()
