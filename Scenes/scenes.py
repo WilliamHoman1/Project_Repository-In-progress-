@@ -1,6 +1,7 @@
 from ascii_art import shirt
 from ascii_art import weapon
 from ascii_art import hiding
+from ascii_art import hammer
 
 def scene_one(current_player):
     """First scene the player will go through, backstory and set up of the
@@ -107,6 +108,7 @@ def stealth_clothing_choice(current_player):
 
 def barricade_choice(current_player):
     """If player chooses to barricade the house. Faced with another option screen."""
+    hammer()
     print("\nYou decide to barricade the house. Where do you start?")
     print("1. Main door – push furniture against it.")
     print("2. Windows – close curtains and block with a dresser.")

@@ -1,6 +1,6 @@
 import threading   # Allows multiple functions to work at the same time.
 from Scenes import scene_four
-
+from ascii_art import phone
 
 
 def input_with_timeout(prompt, timeout=10):
@@ -30,6 +30,10 @@ and you hear the creak of the floor boards. Footsteps.""")
 #Player regains breathe after scene two, goes to another form of option choosing with embedded user
 #input. In the form of match cases. First, allows the user to check inventory and gather their mind
 #before continuing.
+
+    valid_weapons = ["fork", "mini flag", "pen"]
+    stealth_weapons = ["pencil","metal ruler", "broken glass bottle"]
+
     while True:
         choice = input("\nWant to check inventory (y/n):").strip().lower()
         if choice == "y":
@@ -52,7 +56,7 @@ and you hear the creak of the floor boards. Footsteps.""")
             while True:
                 item_choice = input(
                     "Pick up fork, mini flag, or pen? (Fork, Mini Flag, or Pen): ").strip().lower()
-                if item_choice in ("fork", "mini flag", "pen"):
+                if item_choice in valid_weapons:
                     current_player.add_item(item_choice.title())
                     print(f"\nYou picked up the {item_choice}. Suddenly the intruder bursts in!")
                     print("There is no running, you two lock eyes.")
@@ -115,6 +119,7 @@ and you hear the creak of the floor boards. Footsteps.""")
         #of calling 9/11 to progress the story.
             print("\nAfraid of any confrontation. You hide in a back room of the upstairs floor. You pull out your phone.")
             while True:
+                phone()
                 choice5 = input("\nDial 911? (y/n):").strip().lower()
                 if choice5 == "y":
                     print("\nYou start to dial 911. Explaining your life is in danger. The police say they will be there in 5 minutes.")
@@ -171,7 +176,7 @@ and you hear the creak of the floor boards. Footsteps.""")
             print(f"\nLooking around the room for something to defend yourself you find a pencil, metal ruler, and broken glass bottle.")
             while True:
                 weapon_choice = input("\nWhich one do you want?").strip().lower()
-                if weapon_choice in ("pencil" , "metal ruler" , "broken glass bottle"):
+                if weapon_choice in stealth_weapons:
                     current_player.add_item(weapon_choice.title())
                     print("\nThe intruder creaks up the stairs and runs towards you.")
                     break
@@ -186,8 +191,22 @@ and you hear the creak of the floor boards. Footsteps.""")
                     choice2 = input_with_timeout("Dodge? (y/n):", timeout = 5)
                     if choice2 == "y":
                         print("You dodge! Running to another room!")
-                        current_player.location = "another room"
-                        scene_four.scene_four(current_player, intruder)
+                        while True:
+                            phone()
+                            dial_choice= input("As your running you feel your phone in your pocket. Dial 911? (y/n):").strip().lower()
+                            if dial_choice == "y":
+                                print("The police say they will be there in 5 minutes!")
+                                current_player.add_item("Phone")
+                                current_player.location = "another room"
+                                scene_four.scene_four(current_player, intruder)
+                                break
+                            elif dial_choice == "n":
+                                print("\nAs your debating to make a decision the intruder sneaks up on you...")
+                                print("It is over.")
+                                current_player.die()
+                                break
+                            else:
+                                print("Please choose either 'y' or 'n'.")
                         return
                     elif choice2 == "n":
                         print("He stabs you fatally.")
@@ -202,6 +221,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                     intruder.take_damage(15)
                     print("As he is wounded. You run to another room to gather yourself.")
                     while True:
+                        phone()
                         choice3 = input("\nRemembering your phone in your pocket. Do you call 911? (y/n):").strip().lower()
                         if choice3 == "y":
                             print("Great choice. The police say they are on their way!")
@@ -227,6 +247,7 @@ and you hear the creak of the floor boards. Footsteps.""")
             choice = input(f"\nYou must act fast, use the {current_player.inventory[-1]} or run for safety (run/attack): ").strip().lower()
             if choice == "run":
                 while True:
+                    phone()
                     choice = input("\nYou make it upstairs and remember you have your phone on you. Start to dial 911? (y/n):").strip().lower()
                     if choice == "y":
                         print ("\nGreat! The cops said they will be there in 5 minutes.")
@@ -245,7 +266,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                 intruder.take_damage(20)
                 print("\nYou stun him and move on to the next room that you can find shelter in.")
                 current_player.location = "next room"
-                print ("\nYou remember your phone on you and start to dial 911.")
+                print ("You remember your phone on you and start to dial 911.")
                 current_player.add_item("Phone")
                 print("You have to survive for 5 more minutes until the police get there.")
 

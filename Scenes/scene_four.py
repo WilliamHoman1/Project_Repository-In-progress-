@@ -1,7 +1,8 @@
 import random
-
+from ascii_art import you_win
 from Intruder import Intruder
 from player import play_again, Player
+
 
 #ACTIONS is a dictionary that stores all combat behaviors of this scene.
 #Each key represents a player action and contains, player_damage, self_damage
@@ -46,10 +47,12 @@ This is it. This is the final confrontation. SURVIVE UNTIL THE POLICE ARRIVE!!""
             current_player.die()
             break
         if intruder.health <= 20:
+            you_win()
             print("\nThe intruder falls unconscious. You've done it. You hear the sirens and the screeching "
                   "halt of the cop cars.")
             print("Officers burst in frantically. The intruder is arrested. Your home is safe. You are alive."
                   "YOU SURVIVE!!")
+
             play_again()
             break
         print (f"\nYour health: {current_player.health}")
