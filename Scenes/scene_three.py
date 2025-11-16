@@ -50,7 +50,8 @@ and you hear the creak of the floor boards. Footsteps.""")
     #Matches the players last action to the case and then plays through it.
         case "attack":
         #Player previously chose to attack. They now choose a new item and have immediate
-        #confrontation.
+        #confrontation. Includes a timed component that puts the user under increased pressure
+        #to make a decision.
             original_weapon = current_player.inventory[-1]
             print("\n As you panic looking for anything to help you, you spot three different items. ")
             while True:
