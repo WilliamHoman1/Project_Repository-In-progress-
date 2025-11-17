@@ -51,7 +51,8 @@ This is it. This is the final confrontation. SURVIVE UNTIL THE POLICE ARRIVE!!""
             print("\nThe intruder falls unconscious. You've done it. You hear the sirens and the screeching "
                   "halt of the cop cars.")
             print("Officers burst in frantically. The intruder is arrested. Your home is safe. You are alive."
-                  "YOU SURVIVE!!")
+                  " YOU SURVIVE!!")
+            print("\n🥳🎉🥳")
 
             play_again()
             break

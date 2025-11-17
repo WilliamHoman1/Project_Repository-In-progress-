@@ -84,6 +84,7 @@ write this section like in the following example:
 ```
 Researched using a timer with this website: https://www.geeksforgeeks.org/python/how-to-set-an-input-time-limit-in-python/
 Research ASCII art with https://www.asciiart.eu
+Researched how to add music with https://www.youtube.com/watch?v=pcdB2s2y4Qc
 
 ```
 

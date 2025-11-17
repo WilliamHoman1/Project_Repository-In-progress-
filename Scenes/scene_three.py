@@ -23,7 +23,14 @@ def scene_three(current_player, intruder):
     """The third scene of the game. Based off decisions from scene one and two.
     Progresses through their individual story."""
     print("\n---- Scene Three ----")
-    print("""
+    if current_player.hiding_spot == "not upstairs":
+        print ("""
+You are starting to sweat and you feel your shirt getting damp.
+You are alive but terrified. Currently still downstairs.
+
+You dont know what to do but tell yourself you will survive at all costs.""")
+    else:
+        print("""
 Your heart is racing. But most importantly, you are alive.
 You currently are hidden in an extra bedroom.
  
@@ -255,10 +262,10 @@ and you hear the creak of the floor boards. Footsteps.""")
             if choice == "run":
                 while True:
                     phone()
-                    choice = input("\nYou make it to the bathroom and remember you have your phone on you. Start to dial 911? (y/n):").strip().lower()
+                    choice = input("\nYou make it to safety and remember you have your phone on you. Start to dial 911? (y/n):").strip().lower()
                     if choice == "y":
                         print ("\nGreat! The cops said they will be there in 5 minutes.")
-                        print ("'I need to survive 5 more minutes' you tell yourself")
+                        print ("'I need to survive 5 more minutes' you tell yourself.")
                         current_player.location = "another room"
                         scene_four.scene_four(current_player, intruder)
                         break
@@ -268,14 +275,20 @@ and you hear the creak of the floor boards. Footsteps.""")
                         break
                     else:
                         print("\nPlease type 'y' or 'n'.")
-            if choice == "attack":
-                print(f"In a moment of fearlessness you come out from the shadows and smack the intruder with the {current_player.inventory[-1]}.")
-                intruder.take_damage(20)
-                print("\nYou stun him and move on to the next room that you can find shelter in.")
-                current_player.location = "next room"
-                print ("You remember your phone on you and start to dial 911.")
-                current_player.add_item("Phone")
-                print("You have to survive for 5 more minutes until the police get there.")
+            elif choice == "attack":
+                if "Heavy Flashlight" in current_player.inventory or "Long Metal Rod" in current_player.inventory or "BB Gun" in current_player.inventory:
+                    print(f"In a moment of fearlessness you come out from the shadows and smack the intruder with the {current_player.inventory[-1]}.")
+                    intruder.take_damage(20)
+                    print("\nYou stun him and move on to the next room that you can find shelter in.")
+                    current_player.location = "next room"
+                    print ("You remember your phone on you and start to dial 911.")
+                    current_player.add_item("Phone")
+                    print("You have to survive for 5 more minutes until the police get there.")
+                    scene_four.scene_four(current_player, intruder)
+                else:
+                    print("\nYou did not have a weapon to attack with.")
+                    print("He overpowers you with the sledgehammer. It is over.")
+                    current_player.die()
 
 
 

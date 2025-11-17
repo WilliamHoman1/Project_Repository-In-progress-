@@ -25,9 +25,9 @@ def weapon_choice(current_player):
     """If player chooses to arm themselves. Faced with another option screen."""
     weapon()
     print("\nYou decide to arm yourself. What weapon do you grab?")
-    print("1. Kitchen Knife – quick and light.")
-    print("2. Baseball Bat – reliable reach and power.")
-    print("3. Fire Poker – heavy, but solid.")
+    print("1. Kitchen Knife 🔪 – quick and light.")
+    print("2. Baseball Bat 🏏 – reliable reach and power.")
+    print("3. Fire Poker 🔥 – heavy, but solid.")
     choice = input("Choose your weapon (1–3): ")
 
     if choice == "1":
@@ -50,9 +50,9 @@ def hide_choice(current_player):
     """If player chooses to hide. Faced with another option screen."""
     hiding()
     print("\nYou decide to hide. Where do you go?")
-    print("1. Closet – small and dark.")
-    print("2. Under the kitchen island – cramped but hidden.")
-    print("3. Behind the couch – not ideal, but quick.")
+    print("1. Closet 🚪 – small and dark.")
+    print("2. Under the kitchen island 🍽️ – cramped but hidden.")
+    print("3. Behind the couch 🛋️ – not ideal, but quick.")
     choice = input("Choose your hiding spot (1–3): ")
 
     if choice == "1":
@@ -83,9 +83,9 @@ def stealth_clothing_choice(current_player):
     """If player chooses to change clothes for stealth. Faced with another option screen."""
     shirt()
     print("\nYou decide to change into quieter clothing.")
-    print("1. Soft clothes – quieter footsteps.")
-    print("2. Workout gear – flexible and silent.")
-    print("3. Keep current clothes – too risky to waste time changing.")
+    print("1. Soft clothes 🧥 – quieter footsteps.")
+    print("2. Workout gear 👟 – flexible and silent.")
+    print("3. Keep current clothes 👕 – too risky to waste time changing.")
     choice = input("Choose your outfit (1–3): ")
 
     if choice == "1":
@@ -112,9 +112,9 @@ def barricade_choice(current_player):
     """If player chooses to barricade the house. Faced with another option screen."""
     hammer()
     print("\nYou decide to barricade the house. Where do you start?")
-    print("1. Main door – push furniture against it.")
-    print("2. Windows – close curtains and block with a dresser.")
-    print("3. Both – it’ll take longer, but safer.")
+    print("1. Main door 🚪 – push furniture against it.")
+    print("2. Windows 🪟 – close curtains and block with a dresser.")
+    print("3. Both 🏠🛡️ – it’ll take longer, but safer.")
     choice = input("Choose 1–3: ")
 
     if choice == "1":
@@ -141,11 +141,11 @@ def main_decision(current_player):
     while True:
         print(f"\nPLAYER STATUS: {current_player.name} | HEALTH: {current_player.health}")# keep looping until a valid choice triggers scene_two
         print("\nIt’s decision time. What do you want to do?")
-        print("1. Arm yourself.")
-        print("2. Hide.")
-        print("3. Change into a stealthy outfit.")
-        print("4. Barricade the house.")
-        print("5. Check inventory")
+        print("1. Arm yourself. 🔪")
+        print("2. Hide. 🙈")
+        print("3. Change into a stealthy outfit. 🥷")
+        print("4. Barricade the house. 🧱")
+        print("5. Check inventory. 🎒")
         choice = input("Choose 1–5: ")
 
         valid_choice = True
