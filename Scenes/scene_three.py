@@ -24,7 +24,9 @@ def scene_three(current_player, intruder):
     Progresses through their individual story."""
     print("\n---- Scene Three ----")
     print("""
-Your heart is racing. But most importantly, you are alive. 
+Your heart is racing. But most importantly, you are alive.
+You currently are hidden in an extra bedroom.
+ 
 What am I going to do? What am I going to do? questions rapidly fly in your mind. The rain pours harder 
 and you hear the creak of the floor boards. Footsteps.""")
 #Player regains breathe after scene two, goes to another form of option choosing with embedded user
@@ -53,13 +55,14 @@ and you hear the creak of the floor boards. Footsteps.""")
         #confrontation. Includes a timed component that puts the user under increased pressure
         #to make a decision.
             original_weapon = current_player.inventory[-1]
-            print("\n As you panic looking for anything to help you, you spot three different items. ")
+            print("\nAs you panic looking for anything more to help you, you spot three different items. ")
             while True:
                 item_choice = input(
                     "Pick up fork, mini flag, or pen? (Fork, Mini Flag, or Pen): ").strip().lower()
                 if item_choice in valid_weapons:
                     current_player.add_item(item_choice.title())
-                    print(f"\nYou picked up the {item_choice}. Suddenly the intruder bursts in!")
+                    print(f"\nYou picked up the {item_choice}. Suddenly the intruder bursts in "
+                          f"to the room you're hiding in!")
                     print("There is no running, you two lock eyes.")
                     break
                 else:
@@ -79,12 +82,15 @@ and you hear the creak of the floor boards. Footsteps.""")
                         print("You strike again!")
                         intruder.take_damage(10)
                         print ("\nYou run to another bedroom upstairs. Remembering your phone in your pocket. You start to dial 911...")
+                        print("The police say they will be there in 5 minutes.")
                         current_player.add_item("Phone")
                         current_player.location = "another room"
                         scene_four.scene_four(current_player, intruder)
                         break
                     elif go_again == "n":
                         print("\nYou missed an opportunity. As he is stunned, you run to another room.")
+                        print("You remember your phone. You begin to dial 911...")
+                        print("The police say they will be there in 5 minutes.")
                         current_player.location = "another room"
                         scene_four.scene_four(current_player, intruder)
                         break
@@ -118,7 +124,7 @@ and you hear the creak of the floor boards. Footsteps.""")
         case "escape":
         #Player tried to escape the scene and hid upstairs. They are faced with a choice
         #of calling 9/11 to progress the story.
-            print("\nAfraid of any confrontation. You hide in a back room of the upstairs floor. You pull out your phone.")
+            print("\nAfraid of any confrontation. You hide in the very back of the room under a nightstand. You pull out your phone.")
             while True:
                 phone()
                 choice5 = input("\nDial 911? (y/n):").strip().lower()
@@ -135,8 +141,8 @@ and you hear the creak of the floor boards. Footsteps.""")
                             break
                         elif choice6 == "n":
                             print ("\nYou decided not to.")
-                            current_player.location = "another room"
-                            scene_four.scene_four(current_player, intruder)
+                            print ("\nThe intruder finds you but you never picked up a weapon. Your path ends here...")
+                            current_player.die()
                             break
                         else:
                             print("\n Please choose either 'y' or 'n'.")
@@ -243,18 +249,18 @@ and you hear the creak of the floor boards. Footsteps.""")
 
         case _:
         #This is the last case out of the actions. This is for the user that decided to barricade their home.
-            print("\nAs you hide out of site and you are still downstairs, the intruder"
+            print("\nAs you hide out of site terrified, the intruder"
                   "begins heading your direction. ")
             choice = input(f"\nYou must act fast, use the {current_player.inventory[-1]} or run for safety (run/attack): ").strip().lower()
             if choice == "run":
                 while True:
                     phone()
-                    choice = input("\nYou make it upstairs and remember you have your phone on you. Start to dial 911? (y/n):").strip().lower()
+                    choice = input("\nYou make it to the bathroom and remember you have your phone on you. Start to dial 911? (y/n):").strip().lower()
                     if choice == "y":
                         print ("\nGreat! The cops said they will be there in 5 minutes.")
                         print ("'I need to survive 5 more minutes' you tell yourself")
                         current_player.location = "another room"
-
+                        scene_four.scene_four(current_player, intruder)
                         break
                     elif choice == "n":
                         print("\nYou did not dial 911 and the intruder heard you. No one is coming to save you now.")

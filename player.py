@@ -46,7 +46,7 @@ class Player:
 
     def hide(self):
         self.is_hiding = True
-        print(f"{self.name} is now hiding.")
+        print(f"\n{self.name} is now hiding.")
 
     def take_damage(self, damage):
         self.health -= damage

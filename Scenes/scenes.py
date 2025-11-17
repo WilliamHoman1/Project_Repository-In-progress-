@@ -2,6 +2,7 @@ from ascii_art import shirt
 from ascii_art import weapon
 from ascii_art import hiding
 from ascii_art import hammer
+from ascii_art import couch
 
 def scene_one(current_player):
     """First scene the player will go through, backstory and set up of the
@@ -15,7 +16,7 @@ pat down the steak.
 downpour has started. Relieved you begin cooking the steak as the thunder and lightning
 roll on. Time passes. The food is done and you sit down to eat. Suddenly. \n
 BANG! BANG! BANG! again. You look towards the window only to find a silhouette of a man
-prying at your door. You think to yourself, what do i do? Am I getting robed? Am I going
+prying at your door. You think to yourself, what do I do? Am I getting robed? Am I going
 to die???""")
     main_decision(current_player)
 
@@ -42,7 +43,7 @@ def weapon_choice(current_player):
         print("Invalid choice. Try again.")
         return False
     current_player.last_action = "armed"
-    print("\n You grip onto your weapon, the thunder booms as you wait... ")
+    print("\nYou grip onto your weapon, the thunder booms as you wait... ")
     return True
 
 def hide_choice(current_player):
@@ -70,7 +71,8 @@ def hide_choice(current_player):
         current_player.hide()
         current_player.hiding_spot = "behind couch"
         current_player.last_action = "hide"
-        print("\nYou duck behind the couch. The rain masks your quiet breathing.")
+        couch()
+        print("\nYou duck behind the couch. The rain masks your breathing.")
         return True
     else:
         print("Invalid choice. Try again.")

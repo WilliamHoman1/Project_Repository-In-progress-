@@ -17,7 +17,7 @@ def scene_two(current_player, intruder):
     #If the player choose to arm themselves. Based on the decision they made previously of specifically what weapon they chose,
     #a slightly different story line will play. Faced with multiple decisions as well.
 
-        print("You now have a weapon.")  #Add story
+        print("You now have a weapon.")
         if "Kitchen Knife" in current_player.inventory:
             print(f"""You stand firm behind the counter where the smell of steak is still in the air. Clutching the knife
 white-knuckled. You hear another bang but this time it is followed by a shatter. A rain of glass falls to the floor
@@ -31,7 +31,7 @@ the intruder has broken in with a sledgehammer. You start to sweat. Should I att
 
 Before you can overthink, he starts walking towards the kitchen. Do you decide to attack or run?""")  #What happens
         elif "Fire Poker" in current_player.inventory:
-            print("""You stand firm near the fireplace, the smell of the old ashes getting stronger because of your heighten senses. Clutching 
+            print("""You stand firm near the fireplace, the smell of the old ashes getting stronger because of your heightened senses. Clutching 
 the fire poker white-knuckled. You hear another bang but this time it is followed by a shatter. A rain of glass falls to the floor
 the intruder has broken in with a sledgehammer. You start to sweat. Should I attack him? Should I wait? These questions race in your mind.
 
@@ -60,15 +60,15 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
     #If the player is currently hiding, goes through if,elif, and else statements based on the different locations the user could
     #be. Changes the story line based on that information.
 
-        print("You hear a crash — hidden away, peering through the darkness, you see a shadow.")
+        print("\nYou hear a crash — hidden away, peering through the darkness, you see a shadow.")
         if current_player.hiding_spot == "closet":
             print(
                 "Through a sliver of light, you see the intruder pacing around outside. He peers through the window but does not see anything. So he makes "
                 "his decision.")
         elif current_player.hiding_spot == "kitchen island":
             print(
-                "Dust clings to your face as you peer out looking, waiting for any more movement. You can hear your own heart pounding against your chest and onto the floor."
-                "You can see his shadow moving back and forth...")
+                "Shadows cover your face as you peer out looking, waiting for any more movement. You can hear your own heart pounding against your chest. "
+                "\nYou can see his shadow moving back and forth...")
         elif current_player.hiding_spot == "behind couch":
             print(
                 "You crouch low behind the couch, trying not to breathe too loudly. Lightning flashes through the window, briefly illuminating his silhouette.")
@@ -76,8 +76,8 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
             print("You stay hidden, unsure if the intruder has noticed you.")
 
         print(
-            "You hear a loud bang — glass shatters onto the floor. The intruder is inside. He has a sledgehammer Your see the kitchen knife on the table but he will see you if you "
-            "decide to grab it. Stay hidden or go for the weapon?")
+            "You hear a loud bang — glass shatters onto the floor. The intruder is inside. He has a sledgehammer. You see the kitchen knife on the table but he will "
+            "\nsee you if you decide to grab it. Stay hidden or go for the weapon?")
         while True:
             decision = input("\nDo you want to grab the knife? (y/n): ").strip().lower()
             if decision == "y":
@@ -85,19 +85,22 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                 print("\nYou come out of your hiding spot!")
                 current_player.add_item("Kitchen Knife")
                 print(
-                    "You slash wildly, landing a lucky hit! The intruder howls in pain as you sprint upstairs to safety.")
+                    "The intruder is off guard. You take your chance. You slash wildly, landing a lucky hit! "
+                    "\nThe intruder howls in pain as you sprint upstairs to safety.")
+                running_upstairs()
                 intruder.take_damage(20)
                 current_player.last_action = "attack"
+                input ("Press enter to continue...")
                 scene_three.scene_three(current_player, intruder)
                 break
             elif decision == "n":
                 print("\nYou stay perfectly still, your breath shallow.")
-                print("Then you spot something small — a **foam ball** tucked beside you in the closet.")
+                print("Then you spot something small — a foam ball from playing catch with friends earlier.")
                 print("You grab it and gently toss it out into the living room.")
                 print(
                     "The ball bounces softly... then rolls. The intruder turns toward the sound, momentarily distracted.")
                 print("Taking your chance, you slip out, grab your phone from the kitchen counter, and bolt upstairs!")
-
+                input ("\nPress enter to continue...")
                 current_player.add_item("Phone")
                 current_player.last_action = "escape"
                 scene_three.scene_three(current_player, intruder)
@@ -176,7 +179,7 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
     elif current_player.last_action == "barricade":
     #If the player choose to protect their home. There is a different story based on what the user picked to protect their home. Along with
     #different decisions they have to make as well.
-        print("You have protected your house from entry.")
+        print("You have protected this entry point.")
         if "Full Barricade" in current_player.inventory:
             print(f"""Even with heavy pounding, the intruder can’t get in. However, you remember and unlocked door from being outside earlier. Suddenly you see a shadow of a sledgehammer
 The intruder smashes through the window and climbs through. You are frozen in fear.""")
@@ -234,7 +237,7 @@ the sledgehammer. You did not survive.""")
                     print(current_player.die())
                     return
         elif "Barricaded Windows" in current_player.inventory:
-            print("""You block off the windows by moving tall cabinets in front of them. 
+            print("""You block off the windows by moving a tall dresser in front of them. 
 The front door is still weak. Moments later, you hear the clank of the knob dropped to the floor. The intruder has
 a sledgehammer and has broken in.""")
             while True:
@@ -251,7 +254,7 @@ a sledgehammer and has broken in.""")
                 elif choice == "run":
                     running_upstairs()
                     print("""You run upstairs away from the danger. As the intruder looks through the kitchen
-    for valuables. However, you find a long metal rod from a bed. Thinking to yourself this could help.""")
+for valuables. However, you find a long metal rod from a bed. Thinking to yourself this could help.""")
                     while True:
                         choice = input("Pick it up? (y/n): ").strip().lower()
                         if choice == "y":
