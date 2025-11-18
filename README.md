@@ -62,10 +62,14 @@ is to finish all the scenes and then go back and make additions. I also want to 
 
 ### Overview
 
-The overview should be at least a paragraph and describe what your project is about.
+My project is about a home invasion game where the user is the homeowner and the computer is the invader. The user has to make a series
+of decisions in order to survive and beat the game. However, if they make the wrong decision, they are killed and forced to end the game
+or start over. There are multiple different paths the user could go down to make the story their own. That is the basis of the game, a 
+personalized story for the user and they ultimately decide their fate.
 
 ### Tutorial
 
+To start the game, the user will press the play button from the 'main' file. This then pulls up the 
 The tutorial should at least be 2 paragraphs long and describe how to get started using the program. For example, if it
 is a game then you might want to introduce how to start playing and what the basic controls are. If it is a web
 application, you might want to indicate how to navigate the application and interact with different components.
