@@ -183,6 +183,7 @@ def hammer():
     print(art)
 
 def phone():
+    """Prints ASCII art of a phone."""
     art = r"""
 ⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣳⣶⡀
 ⢘⣿⠛⠛⠛⠛⠛⠚⠛⠛⠛⠛⢻⡇

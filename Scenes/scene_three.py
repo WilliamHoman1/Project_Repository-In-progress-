@@ -56,7 +56,9 @@ and you hear the creak of the floor boards. Footsteps.""")
             print("\nInvalid input. Please try again.")
 
     match current_player.last_action:
-    #Matches the players last action to the case and then plays through it.
+    #Matches the players last action to the case and then plays through it. In each match case,
+    #there are multiple if,elif, and else statements wrapped inside loops to ensure the game's
+    #mechanics work correctly.
         case "attack":
         #Player previously chose to attack. They now choose a new item and have immediate
         #confrontation. Includes a timed component that puts the user under increased pressure
@@ -83,12 +85,12 @@ and you hear the creak of the floor boards. Footsteps.""")
                     current_player.take_damage(10)
 
                     go_again = input_with_timeout(
-                        "\nQuick!! You have 10 seconds! Go for another hit while you have him injured? (y/n):",
+                        "\nQuick!! ⏱️ You have 10 seconds! Go for another hit while you have him injured? (y/n):",
                         timeout=10)
                     if go_again == "y":
                         print("You strike again!")
                         intruder.take_damage(10)
-                        print ("\nYou run to another bedroom upstairs. Remembering your phone in your pocket. You start to dial 911...")
+                        print ("\nYou run to another bedroom upstairs. Remembering your phone in your pocket. You start to dial 911... 📞")
                         print("The police say they will be there in 5 minutes.")
                         current_player.add_item("Phone")
                         current_player.location = "another room"
@@ -108,7 +110,8 @@ and you hear the creak of the floor boards. Footsteps.""")
 
         case "downstairs":
         #Player choose to stay downstairs. They now are faced with getting out of a situation
-        #they put themselves in.
+        #they put themselves in. Series of if,elif, and else statements wrapped inside  a loop here to carry
+        #out the inputs and print statements.
             print("\nYou hear the intruder drawing near. You must think quick. You hide in the pantry." )
             print("\nHowever, hes now in front of the door!!")
 
@@ -116,7 +119,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                 choice3 = input("\nSlam open the door on the intruder and run upstairs? (y/n):").strip().lower()
                 if choice3 == "y":
                     intruder.take_damage(10)
-                    print("\nIt worked! You run upstairs. Remembering your phone is in your pocket. You start to dial 911...")
+                    print("\nIt worked! You run upstairs. Remembering your phone is in your pocket 📞. You start to dial 911...")
                     current_player.add_item("Phone")
                     current_player.location = "another room"
                     scene_four.scene_four(current_player, intruder)
@@ -131,7 +134,7 @@ and you hear the creak of the floor boards. Footsteps.""")
         case "escape":
         #Player tried to escape the scene and hid upstairs. They are faced with a choice
         #of calling 9/11 to progress the story.
-            print("\nAfraid of any confrontation. You hide in the very back of the room under a nightstand. You pull out your phone.")
+            print("\nAfraid of any confrontation. You hide in the very back of the room under a nightstand. You pull out your phone 📞. ")
             while True:
                 phone()
                 choice5 = input("\nDial 911? (y/n):").strip().lower()
@@ -171,7 +174,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                 choice4 = input(f"\nHe walks up the stairs looking for valuables. You have time to strike. Do it? (y/n):").strip().lower()
                 if choice4 == "y":
                     intruder.take_damage(20)
-                    print("\nSuccessful! He's wounded! You move to another room upstairs. Phone in your pocket. You start to dial 911...")
+                    print("\nSuccessful! He's wounded! You move to another room upstairs. Phone in your pocket . You start to dial 911...📞")
                     print("The police say they will be there in 5 minutes. Survive 5 more minutes.")
                     current_player.location = "another room"
                     scene_four.scene_four(current_player, intruder)
@@ -186,7 +189,8 @@ and you hear the creak of the floor boards. Footsteps.""")
 
         case "stealth":
         #Players last action was to be stealthy. This mini scene plays out because they picked that.
-        #The user is once again faced with different decisions.
+        #The user is once again faced with different decisions. This scene includes a timed component.
+        #The user is put under real life pressure to make a decision.
             print(f"\nLooking around the room for something to defend yourself you find a pencil, metal ruler, and broken glass bottle.")
             while True:
                 weapon_choice = input("\nWhich one do you want?").strip().lower()
@@ -201,13 +205,13 @@ and you hear the creak of the floor boards. Footsteps.""")
                 if choice == "fight":
                     print(f"You stab with the {current_player.inventory[-1]}! ")
                     intruder.take_damage(20)
-                    print("\nThe intruder lunges back at you with his sledgehammer! You have 5 seconds!")
+                    print("\nThe intruder lunges back at you with his sledgehammer! You have 5 seconds! ⏱️")
                     choice2 = input_with_timeout("Dodge? (y/n):", timeout = 5)
                     if choice2 == "y":
                         print("You dodge! Running to another room!")
                         while True:
                             phone()
-                            dial_choice= input("As your running you feel your phone in your pocket. Dial 911? (y/n):").strip().lower()
+                            dial_choice= input("As your running you feel your phone in your pocket.  Dial 911? 📞 (y/n):").strip().lower()
                             if dial_choice == "y":
                                 print("The police say they will be there in 5 minutes!")
                                 current_player.add_item("Phone")
@@ -236,7 +240,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                     print("As he is wounded. You run to another room to gather yourself.")
                     while True:
                         phone()
-                        choice3 = input("\nRemembering your phone in your pocket. Do you call 911? (y/n):").strip().lower()
+                        choice3 = input("\nRemembering your phone in your pocket. Do you call 911? 📞 (y/n):").strip().lower()
                         if choice3 == "y":
                             print("Great choice. The police say they are on their way!")
                             current_player.add_item("Phone")
@@ -256,13 +260,15 @@ and you hear the creak of the floor boards. Footsteps.""")
 
         case _:
         #This is the last case out of the actions. This is for the user that decided to barricade their home.
+        #Again, same format as every other match case, if, elif, and else statements mixed in with loops to ensure
+        #the user inputs correctly.
             print("\nAs you hide out of site terrified, the intruder"
                   "begins heading your direction. ")
             choice = input(f"\nYou must act fast, use the {current_player.inventory[-1]} or run for safety (run/attack): ").strip().lower()
             if choice == "run":
                 while True:
                     phone()
-                    choice = input("\nYou make it to safety and remember you have your phone on you. Start to dial 911? (y/n):").strip().lower()
+                    choice = input("\nYou make it to safety and remember you have your phone on you. Start to dial 911? 📞 (y/n):").strip().lower()
                     if choice == "y":
                         print ("\nGreat! The cops said they will be there in 5 minutes.")
                         print ("'I need to survive 5 more minutes' you tell yourself.")
@@ -281,7 +287,7 @@ and you hear the creak of the floor boards. Footsteps.""")
                     intruder.take_damage(20)
                     print("\nYou stun him and move on to the next room that you can find shelter in.")
                     current_player.location = "next room"
-                    print ("You remember your phone on you and start to dial 911.")
+                    print ("You remember your phone on you and start to dial 911 📞. ")
                     current_player.add_item("Phone")
                     print("You have to survive for 5 more minutes until the police get there.")
                     scene_four.scene_four(current_player, intruder)

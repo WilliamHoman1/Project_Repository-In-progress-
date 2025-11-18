@@ -65,12 +65,13 @@ is to finish all the scenes and then go back and make additions. I also want to 
 My project is about a home invasion game where the user is the homeowner and the computer is the invader. The user has to make a series
 of decisions in order to survive and beat the game. However, if they make the wrong decision, they are killed and forced to end the game
 or start over. There are multiple different paths the user could go down to make the story their own. That is the basis of the game, a 
-personalized story for the user and they ultimately decide their fate.
+personalized story for the user, they ultimately decide their own fate.
 
 ### Tutorial
 
 To start the game, the user will press the play button from the 'main' file. This then pulls up the window where the game will
-be played. From there, it will ask the user's name and then the user should follow the instructions and read the story
+be played. The music will start playing and the user will be prompted with their first input. From there, it will ask the user's 
+name and then the user should follow the instructions and read the story. As they read they will be continuously asked for inputs
 in order to play along. This is a text-based game so the controls are typing in what the desired inputs are for the game.
 
 If the desired inputs are not typed in, an error message will appear and the user will have another chance to correct themselves.
@@ -79,9 +80,10 @@ are required. This game is all about choices and the user that makes the correct
 
 ### Installation Instructions
 
-To run this game, the user needs to clone or download my project into pycharm or a program that runs python.
+To run this game, the user needs to clone or download the project into pycharm or a program that runs python.
 Next, they need to open the terminal in the project folder and install pyfiglet as well as pygame. After these
-requirements are completed, the user should be able to successfully run the game through the main file.
+requirements are completed, the user should be able to successfully run the game through the main file. The user 
+should not have any difficult with the audio file as it should be included in the project files.
 
 
 ### Citation, Sources, and References
@@ -96,7 +98,3 @@ Researched how to add music with https://www.youtube.com/watch?v=pcdB2s2y4Qc
 Music from https://uppbeat.io/browse/collection/inspired-by-stranger-things
 
 ```
-
-Any assets and resources you use need to be verifiable that they are licenced for you to use. If you made your
-own assets or used generative AI, you must indicate that you did so. Include a link to any assets that you
-downloaded and used. **Leaving this section unedited will count as not having completed it.**

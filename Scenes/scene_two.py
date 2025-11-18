@@ -135,6 +135,8 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                     print("Please type 'y' or 'n'.")
 
         elif "Workout Gear" in current_player.inventory:
+        #If the user previously chose to change into workout gear. This branch will play as well as the story line. Used
+        #if, elif, and else statements here.
             print(
                 "You feel agile. Ready to run out of the house to save your life. But, all of your possessions will be gone. Either way, you are ready for it. "
                 "\nYou hear the intruder break the lock on the door with a sledgehammer 🔨, he's in. But, he does not know where you are.")
@@ -169,6 +171,8 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
                     print("Please type 'y' or 'n'.")
 
         elif "Keep current clothes" in current_player.inventory:
+        #If the user chose to keep their current clothes, this branch will play.
+
             print("Saving time, you sit waiting for the next move. After watching every move of the man outside. He starts to barge through the door. "
                   "\nBANG! 💥 He breaks through with a sledgehammer 🔨.")
             while True:
@@ -211,6 +215,7 @@ Before you can overthink, he starts walking towards the kitchen. You can either 
     #different decisions they have to make as well.
         print("\nYou have protected this entry point.")
         if "Full Barricade" in current_player.inventory:
+        #If the user chose to barricade both the window and the main door, this branch of code will play.
             print(f"""Even with heavy pounding, the intruder can’t get in. However, just as you feel safe and secure, he smashes
 through the garage door and you hear a long BANG!💥 He's in and it sounds like he has a sledgehammer... 🔨""")
             print("You spot him and have a chance to sneak up on him and strike!")
@@ -238,6 +243,7 @@ the sledgehammer. You did not survive.""")
                 current_player.health = 0
                 print(current_player.die())
         elif "Barricaded Door" in current_player.inventory:
+        #If the user chose to only barricade the door this branch of code will play
             print("You reinforced the main door. It's steady for now."
                   " But suddenly you hear shattering glass  💥 spread throughout the living room. \nHe found another way in."
                   " And he has a sledgehammer 🔨.")
@@ -269,6 +275,7 @@ the sledgehammer. You did not survive.""")
                     print(current_player.die())
                     return
         elif "Barricaded Windows" in current_player.inventory:
+        #If the user chose to barricade the window this branch of code will play
             print("""You block off the windows by moving a tall dresser in front of them. 
 The front door is still weak. Moments later, you hear the clank of the knob dropped to the floor. The intruder has
 a sledgehammer 🔨 and has broken in.""")
