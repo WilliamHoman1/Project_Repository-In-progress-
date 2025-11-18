@@ -3,6 +3,7 @@ import player
 from ascii_art import draw_ascii_house
 from ascii_art import draw_smiley
 from music import game_music
+
 def start_game():
     """The introduction screen and welcome message of the game.
     """

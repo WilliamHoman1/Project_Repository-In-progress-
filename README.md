@@ -69,26 +69,31 @@ personalized story for the user and they ultimately decide their fate.
 
 ### Tutorial
 
-To start the game, the user will press the play button from the 'main' file. This then pulls up the 
-The tutorial should at least be 2 paragraphs long and describe how to get started using the program. For example, if it
-is a game then you might want to introduce how to start playing and what the basic controls are. If it is a web
-application, you might want to indicate how to navigate the application and interact with different components.
+To start the game, the user will press the play button from the 'main' file. This then pulls up the window where the game will
+be played. From there, it will ask the user's name and then the user should follow the instructions and read the story
+in order to play along. This is a text-based game so the controls are typing in what the desired inputs are for the game.
+
+If the desired inputs are not typed in, an error message will appear and the user will have another chance to correct themselves.
+The main premise of this game is that the user picks a choice from a branch and that choice goes to a story where more inputs 
+are required. This game is all about choices and the user that makes the correct ones will succeed!
 
 ### Installation Instructions
 
-Write instructions here for running your program and any files required to do so as appropriate for your programming
-language**. For Python projects, this typically means having a `requirements.txt file` that you create using
-“pip freeze > requirements.txt”.
+To run this game, the user needs to clone or download my project into pycharm or a program that runs python.
+Next, they need to open the terminal in the project folder and install pyfiglet as well as pygame. After these
+requirements are completed, the user should be able to successfully run the game through the main file.
+
 
 ### Citation, Sources, and References
 
-Complete this section to include citations for assets and resources that you used for your project. For example, you could
-write this section like in the following example:
 
 ```
 Researched using a timer with this website: https://www.geeksforgeeks.org/python/how-to-set-an-input-time-limit-in-python/
-Research ASCII art with https://www.asciiart.eu
+Researched ASCII art with https://www.asciiart.eu
+Researched ASCII art with https://emojicombos.com
+Generated ASCII art with chatgpt.com
 Researched how to add music with https://www.youtube.com/watch?v=pcdB2s2y4Qc
+Music from https://uppbeat.io/browse/collection/inspired-by-stranger-things
 
 ```
 

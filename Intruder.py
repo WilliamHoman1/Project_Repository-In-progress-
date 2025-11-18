@@ -8,6 +8,8 @@ class Intruder:
         self.inventory = []
 
     def take_damage(self, amount):
+        """This function contains the mechanics for the intruder taking
+        damage."""
         self.health -= amount
         print(f"\n{self.name} takes {amount} damage! Intruder Health: {self.health}")
         if self.health <= 0:
