@@ -4,7 +4,7 @@ from ascii_art import phone
 
 
 def input_with_timeout(prompt, timeout=10):
-    """Gives user a time limit to make a decision.
+    """ Gives user a time limit to make a decision.
     Runs for the given amount of seconds and then quits the program and runs
     the consequence. Forcing the user to make a decision."""
     result = [None]
